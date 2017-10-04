@@ -21,7 +21,7 @@ There are for now two different template files. One for table layout and one for
 If you use bootstrap theme but you want old table layout for your site, just copy this template 
 under name glossarybootrap3_template.php under your theme/templates/glossary/ folder. 
 
-**glossarybootstrap3_template.php** - is used if your theme has defined BOOTSRAP with value 3.
+**glossarybootstrap3_template.php** - is used if your theme has defined BOOTSTRAP with value 3.
 
 This way it will be easier add support for bootstrap4 in future. 
  
