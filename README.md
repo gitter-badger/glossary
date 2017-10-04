@@ -16,10 +16,10 @@ It's easier than to maintance two different template systems. So try.
 
 There are for now two different template files. One for table layout and one for bootstrap3. 
 
-*glossarytable_template.php* - old table layout if bootstrap3 is not defined. 
+**glossarytable_template.php** - old table layout if bootstrap3 is not defined. 
 
 If you use bootstrap theme but you want old table layout for your site, just copy this template 
-under name glossarybootrap3_template.php under your theme/templated/glossary/ folder. 
+under name glossarybootrap3_template.php under your theme/templates/glossary/ folder. 
 
 **glossarybootstrap3_template.php** - is used if your theme has defined BOOTSRAP with value 3.
 
