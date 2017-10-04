@@ -7,15 +7,22 @@
 - REMOVED deprecated e_latest and e_status
 - REWRITTEN shortcodes and template system
 - ADDED plugin.xml, removed plugin.php
-- ADDED new admin_ui by new standards - rica-carv
+- ADDED new admin_ui by new standards 
 - FIXED missing images
 - REMOVED glossary_ver.php
  
 ## Planned
+Not working:
+- PLANNED fix somehow linkwords functionality
+- PLANNED fix textarea field (wysiwyg)
 
+Not updated:
 - PLANNED Convert LAN files (inclunding filenames and paths) to V2 standards
-- PLANNED Enable image (or images) in definitons. Needs to be made a custom media manager categorie (in plugin.xml) and a database field...
 - PLANNED Change the user field. Change the old v1 (1.NAME) to V2 (1 - user id only) and use USER core functions to retrieve username...
+- PLANNED update e_list.php
+
+New functionality:
+- PLANNED Enable image (or images) in definitons. Needs to be made a custom media manager categorie (in plugin.xml) and a database field...
 - PLANNED Allow templating of the initials buttons form (used as filter when browsing definitions)
 - PLANNED Allow definition to be rendered as several options: as a link, as a link AND tooltip, as a tooltip only.
   - Enable to show link in tooltip or no...
@@ -25,5 +32,7 @@
   - Reuse the admin_config code to render the frontend edit / create definition form, maybe?
   - Check files / classes redundancy and overhead...
 - PLANNED Old legacy files cleanup
+
+
 
  
