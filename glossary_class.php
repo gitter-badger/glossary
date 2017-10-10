@@ -22,8 +22,12 @@ if (!defined('e107_INIT')) { exit; }
 // OLD include_lan(e_PLUGIN."glossary/languages/".e_LANGUAGE."/Lan_".basename(__FILE__));
 e107::lan('glossary','class',true);
 
+require_once(e_PLUGIN.'glossary/glossary_trait.php');
+
 class glossary_class
 {
+  use GlossaryTrait;
+
 	var $message;
 	var $caption;
 
@@ -109,7 +113,9 @@ class glossary_class
 		return $head_sub;
 	}
 
-	function show_letter($approved)
+// Deprecated in favor of trait... No need to include and start class...
+/*
+	function show_letter($approved = 1)
 	{
 
 		$distinctwords = e107::getDb()->retrieve("glossary", " DISTINCT(glo_name) ", "glo_approved = '$approved' ORDER BY glo_name ASC", "default");
@@ -147,12 +153,14 @@ class glossary_class
 		}
 		return $text;
 	}
+*/
 	
 	function show_word($approved)
 	{
 		global $sql, $ns, $rs, $tp;
 
-		$text = $this->show_letter($approved);
+//		$text = $this->show_letter($approved);
+		$text = $this->browse_letter($approved);
 
 		$letter = (isset($_POST['letter']) ? $_POST['letter'] : "");
 		if ($letter != "" && $letter != LAN_GLOSSARY_SHOWLETT_02 )
@@ -346,20 +354,24 @@ class glossary_class
 		$ns -> tablerender($caption, $text);
 	}
 
+/* Orphan function!
 	function createWord($id)
 	{
 		$this->createDef($id, 0);
 	}
+*/
 
 	function createSubWord($id)
 	{
 		$this->createDef($id, 1);
 	}
 
+/* Orphan function!
 	function editWord($id)
 	{
 		$this->createWord($id);
 	}	
+*/
 	
 	function admin_update($update, $type, $success)
 	{
@@ -587,6 +599,7 @@ class glossary_class
 			}
 		}
 
+/*
 		$ok = 0;
 		for($i = 0; $i <= 255; $i++)
 		{
@@ -597,6 +610,7 @@ class glossary_class
 				break;
 			}
 		}
+
 
 		$wcar = "0-9";
 		if ($ok)
@@ -614,7 +628,12 @@ class glossary_class
 		}
 
 		$text2 = e107::getParser()->parseTemplate($this->plugTemplates['WORD_ALLCHAR_PRE'], FALSE).$text2.e107::getParser()->parseTemplate($this->plugTemplates['WORD_ALLCHAR_POST'], FALSE);
-		$text  = $text2.$text;
+*/
+
+//    $text2 = $this->show_letter(1);
+
+//		$text  = $text2.$text;
+		$text  = $this->browse_letter().$text;
     
     $start = e107::getParser()->parseTemplate($this->plugTemplates['WORD_PAGE_START']);
     $end   = e107::getParser()->parseTemplate($this->plugTemplates['WORD_PAGE_END']);

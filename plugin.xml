@@ -20,7 +20,9 @@
 	<pluginPrefs>
     <!--		start general prefs -->
 		<pref name="glossary_linkword">0</pref>
-		<pref name="glossary_submit">0</pref>
+    <!-- Redundant pref, can be dissabled via glossary_submit_class dropdown selction
+    		<pref name="glossary_submit">0</pref>
+    -->
  		<pref name="glossary_submit_class">255</pref>
 		<pref name="glossary_submit_directpost">0</pref>
 		<pref name="glossary_submit_htmlarea">0</pref>
