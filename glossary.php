@@ -26,7 +26,7 @@ class e_glossary
 	var $linkdefs = array();
 	var $linkurls = array();
 
-	function e_glossary()
+	function __construct()
 	{
 
 		// constructor
