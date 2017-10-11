@@ -20,19 +20,16 @@ Not updated:
 - PLANNED Convert LAN files (inclunding filenames and paths) to V2 standards
 - PLANNED Change the user field. Change the old v1 (1.NAME) to V2 (1 - user id only) and use USER core functions to retrieve username...
 - PLANNED update e_list.php
+- PLANNED Rewriting of templates and shortcodes, make use of wrappers, mainly in the alphabet button filter...
 
 New functionality:
 - PLANNED Enable image (or images) in definitons. Needs to be made a custom media manager categorie (in plugin.xml) and a database field...
-- PLANNED Allow templating of the initials buttons form (used as filter when browsing definitions)
-- PLANNED Allow definition to be rendered as several options: as a link, as a link AND tooltip, as a tooltip only.
+- PLANNED Allow definition linkwords to be rendered as several options: as a link, as a link AND tooltip, as a tooltip only.
   - Enable to show link in tooltip or no...
 - PLANNED Code cleanup:
   - Delete unused functions / methods
-  - Use traits for commonly used functions (like the category select in admin area...), instead of classes...
+  - Use traits for commonly used functions, instead of classes...
   - Reuse the admin_config code to render the frontend edit / create definition form, maybe?
   - Check files / classes redundancy and overhead...
+  - Simplify code. Unnest functions inside single line functions, etc
 - PLANNED Old legacy files cleanup
-
-
-
- 

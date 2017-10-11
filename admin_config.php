@@ -13,6 +13,8 @@ e107::lan('glossary','admin',true);
 e107::lan('glossary','help',true);
 e107::lan('glossary','class',true);
 
+require_once(e_PLUGIN.'glossary/glossary_trait.php');
+
 class glossary_adminArea extends e_admin_dispatcher
 {
 
@@ -80,6 +82,7 @@ class glossary_adminArea extends e_admin_dispatcher
 
 class glossary_ui extends e_admin_ui
 {
+    use GlossaryTrait;
 			
 		protected $pluginTitle		= 'Glossary';
 		protected $pluginName		= 'glossary';
@@ -123,12 +126,19 @@ class glossary_ui extends e_admin_ui
 		public function init()
 		{
 			// Set drop-down values (if any). 
-    require_once(e_PLUGIN.'glossary/glossary_class.php');
-    $gc = new glossary_class();
+//    require_once(e_PLUGIN.'glossary/glossary_class.php');
+//    $gc = new glossary_class();
+
+//var_dump(e107::getPlugPref('glossary','glossary_submit_htmlarea'));
+
+    if (e107::getPlugPref('glossary','glossary_submit_htmlarea'))
+  		$this->fields['glo_description']['type'] = 'bbarea';
     
 //    var_dump($gc);
-    $this->postFiliterMarkup = $gc->show_letter(1);
-
+//    $this->postFiliterMarkup = $gc->show_letter(1);
+    $this->postFiliterMarkup = $this->browse_letter(1);
+//    $this->postFiliterMarkup = 	$gc->displayWords();
+    
 		$tp = e107::getParser();
     $letter = (isset($_GET['letter']) ? $_GET['letter'] : "");
 		if ($letter != "" && $letter != LAN_GLOSSARY_SHOWLETT_02 )
@@ -198,11 +208,12 @@ class glossary_submitted_ui extends glossary_ui
 	public function init()
 	{
 			// Set drop-down values (if any). 
-    require_once(e_PLUGIN.'glossary/glossary_class.php');
-    $gc = new glossary_class();
+//    require_once(e_PLUGIN.'glossary/glossary_class.php');
+//    $gc = new glossary_class();
     
 //    var_dump($gc);
-    $this->postFiliterMarkup = $gc->show_letter(0);
+//    $this->postFiliterMarkup = $gc->show_letter(0);
+    $this->postFiliterMarkup = $this->browse_letter(0);
 
 //    var_dump($_POST);
 //    var_dump($_GET);
@@ -229,7 +240,7 @@ class glossary_general_ui extends e_admin_ui
 
   	protected $prefs = array( 
   					'glossary_linkword'  => array('title'=> LAN_GLOSSARY_OPTGEN_05,'type' => 'boolean'),
-					  'glossary_submit'  => array('title'=> LAN_GLOSSARY_OPTGEN_07,'type' => 'boolean'),
+//////////					  'glossary_submit'  => array('title'=> LAN_GLOSSARY_OPTGEN_07,'type' => 'boolean'),
 					  'glossary_submit_class'  => array('title'=> LAN_GLOSSARY_OPTGEN_08, 'type'=>'userclass'),
 					  'glossary_submit_directpost'  => array('title'=> LAN_GLOSSARY_OPTGEN_09,'type' => 'boolean'),
 					  'glossary_submit_htmlarea'  => array('title'=> LAN_GLOSSARY_OPTGEN_10,'type' => 'boolean'),
