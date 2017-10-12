@@ -22,8 +22,12 @@ if (!defined('e107_INIT')) { exit; }
 // OLD include_lan(e_PLUGIN."glossary/languages/".e_LANGUAGE."/Lan_".basename(__FILE__));
 e107::lan('glossary','class',true);
 
+require_once(e_PLUGIN.'glossary/glossary_trait.php');
+
 class glossary_class
 {
+  use GlossaryTrait;
+
 	var $message;
 	var $caption;
 
@@ -111,6 +115,8 @@ class glossary_class
 		return $head_sub;
 	}
 
+// Deprecated in favor of trait... No need to include and start class..
+/*
 	function show_letter($approved)
 	{
 
@@ -149,7 +155,8 @@ class glossary_class
 		}
 		return $text;
 	}
-	
+*/
+/* Orphan functions	
 	function show_word($approved)
 	{
 		global $sql, $ns, $rs, $tp;
@@ -219,6 +226,7 @@ class glossary_class
 	{
 		$this->show_word(0);
 	}
+*/
 
 	function createDef($id = 0, $sub = 0)
 	{
@@ -348,6 +356,7 @@ class glossary_class
 		$ns -> tablerender($caption, $text);
 	}
 
+/* Orphan functions	
 	function createWord($id)
 	{
 		$this->createDef($id, 0);
@@ -362,6 +371,7 @@ class glossary_class
 	{
 		$this->createWord($id);
 	}	
+*/
 	
 	function admin_update($update, $type, $success)
 	{
@@ -400,10 +410,12 @@ class glossary_class
 		$this->caption = $caption;
 	}
 
+/* Nested function....
 	function addWord($approved = '1')
 	{
 		$this->updateWord(0, $approved);
 	}
+*/
 	
 	function updateWord($id, $approved = '1')
 	{
@@ -461,13 +473,17 @@ class glossary_class
 			exit;
 		}
 
+/*
 		$direct = (isset($pref['glossary_submit_directpost']) && $pref['glossary_submit_directpost']) ? 1 : 0;
 
 		if ($direct)
 			$this->addWord(1);
 		else
 			$this->addWord(0);
-			
+*/
+
+    $this->updateWord(0, isset($pref['glossary_submit_directpost']));
+    			
 		$e_event->trigger("wordsub", $edata_ls);
 		
 		if ($direct)
@@ -661,6 +677,7 @@ class glossary_class
 		return $text;
 	}
 	
+/* WHY NESTED FUNCTIONS???
 	function buildMenuLastWord()
 	{
 		return $this->buildMenuWord("glo_datestamp DESC");
@@ -670,6 +687,7 @@ class glossary_class
 	{
 		return $this->buildMenuWord("RAND()");
 	}
+*/
 
 	function nospam($text)
 	{
