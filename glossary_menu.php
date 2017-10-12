@@ -19,24 +19,27 @@
 
 if (!defined('e107_INIT')) { exit; }
 
-global   $rs;
+//--global   $rs;  ??????????
 
 $pref = e107::getPlugConfig('glossary')->getPref();
 
 require_once(e_PLUGIN.'glossary/glossary_class.php');
 $gc = new glossary_class();
 
-require_once(e_HANDLER."form_handler.php");
-$rs = new form;
+//--require_once(e_HANDLER."form_handler.php");
+//--$rs = new form;  ?????????
 
 include_lan(e_PLUGIN."glossary/languages/".e_LANGUAGE."/Lan_".basename(__FILE__));
 
 $text = $gc->displayNav("menu");  	 
 
+/*----
 if (isset($pref['glossary_menu_lastword']) && $pref['glossary_menu_lastword'])
 	$text .= $gc->buildMenuLastWord();
 else
 	$text .= $gc->buildMenuRandWord();
+*/
+	$text .= $gc->buildMenuWord(isset($pref['glossary_menu_lastword'])?"glo_datestamp DESC":"RAND()");
 
 $caption = (isset($pref['glossary_menu_caption']) && $pref['glossary_menu_caption'] ? $pref['glossary_menu_caption'] : LAN_GLOSSARY_BLMENU_01);
 
