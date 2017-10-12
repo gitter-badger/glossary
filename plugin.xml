@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<e107Plugin name="Glossary" lan="LAN_GLOSSARY_PLUGIN_01" version="2.0.0" date="2017-09-22" compatibility="2.0" installRequired="true" >
+<e107Plugin name="Glossary" lan="LAN_GLOSSARY_PLUGIN_01" version="2.0.1" date="2017-09-22" compatibility="2.0" installRequired="true" >
 
 	<author name="Andre DUCLOS shirka" url="http://www.shirka.org" />
 	<summary lan="">A Glossary of Terms</summary>
@@ -17,6 +17,9 @@
 	<siteLinks>
 		<link url="{e_PLUGIN}glossary/glossaire.php" >LAN_GLOSSARY_PLUGIN_04</link>		
 	</siteLinks>
+  <mediaCategories>
+    <category type="image" sef="glossary-images" perm="everyone" image='{e_PLUGIN}glossary/images/glossary_images.png'>Glossary Images</category>
+  </mediaCategories>
 	<pluginPrefs>
     <!--		start general prefs -->
 		<pref name="glossary_linkword">0</pref>

@@ -155,6 +155,7 @@ class glossary_class
 	}
 */
 	
+/* Orphan functions
 	function show_word($approved)
 	{
 		global $sql, $ns, $rs, $tp;
@@ -225,7 +226,7 @@ class glossary_class
 	{
 		$this->show_word(0);
 	}
-
+*/
 	function createDef($id = 0, $sub = 0)
 	{
 		global $sql, $tp, $ns, $rs ;
@@ -360,12 +361,12 @@ class glossary_class
 		$this->createDef($id, 0);
 	}
 */
-
+/* Nested function
 	function createSubWord($id)
 	{
 		$this->createDef($id, 1);
 	}
-
+*/
 /* Orphan function!
 	function editWord($id)
 	{
@@ -410,11 +411,12 @@ class glossary_class
 		$this->caption = $caption;
 	}
 
+/* Nested function....
 	function addWord($approved = '1')
 	{
 		$this->updateWord(0, $approved);
 	}
-	
+*/	
 	function updateWord($id, $approved = '1')
 	{
 		global $sql, $tp, $e107cache;
@@ -471,12 +473,15 @@ class glossary_class
 			exit;
 		}
 
+/*
 		$direct = (isset($pref['glossary_submit_directpost']) && $pref['glossary_submit_directpost']) ? 1 : 0;
 
 		if ($direct)
 			$this->addWord(1);
 		else
 			$this->addWord(0);
+*/
+    $this->updateWord(0, isset($pref['glossary_submit_directpost']));
 			
 		$e_event->trigger("wordsub", $edata_ls);
 		
@@ -670,16 +675,18 @@ class glossary_class
 		return $text;
 	}
 	
+/* WHY NESTED FUNCTIONS???
 	function buildMenuLastWord()
 	{
 		return $this->buildMenuWord("glo_datestamp DESC");
 	}
-	
+*/
+/*	
 	function buildMenuRandWord()
 	{
 		return $this->buildMenuWord("RAND()");
 	}
-
+*/
 	function nospam($text)
 	{
 		$tmp = explode("@", $text);

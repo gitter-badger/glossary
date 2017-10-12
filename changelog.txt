@@ -1,3 +1,7 @@
+## Version 2.0.1 
+- FIXED fix textarea field (wysiwyg)
+
+
 ## Version 2.0.0  
 
 - FIXED some sql queries  
@@ -14,7 +18,7 @@
 ## Planned
 Not working:
 - PLANNED fix somehow linkwords functionality
-- PLANNED fix textarea field (wysiwyg)
+~~- PLANNED fix textarea field (wysiwyg)~~
 
 Not updated:
 - PLANNED Convert LAN files (inclunding filenames and paths) to V2 standards

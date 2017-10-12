@@ -168,12 +168,15 @@ switch(vartrue($action)) {
 					$text .= "<br />";
 		$text .= ADMIN_DELETE_ICON." : ".LAN_GLOSSARY_HELP_07;
 // removed by rica_carv					$text .= "<br /><br />";
+/* Old redundant LAN's
 					$text .= "<br />";
 		$text .= GLOSSARY_ICON_LINK." : ".LAN_GLOSSARY_HELP_09;
 // removed by rica_carv					$text .= "<br /><br />";
 					$text .= "<br />";
 		$text .= GLOSSARY_ICON_NOLINK." : ".LAN_GLOSSARY_HELP_10;
+*/
 	}
+
 // Removed by rica_carv }
 
 //$helptitle = LAN_GLOSSARY_HELP_01;

@@ -67,10 +67,13 @@ if ($action == "createSub")
 {
 	if (check_class($pref['glossary_submit_class']))
 	{
+/*
 		if (isset($pref['glossary_submit_directpost']) && $pref['glossary_submit_directpost'])
 			$gc->createSubWord(1);
 		else
 			$gc->createSubWord(0);
+*/
+			$gc->createDef(isset($pref['glossary_submit_directpost']), 1);
 	}
 	else
 		js_location(e_SELF);
