@@ -17,6 +17,7 @@ if (!defined('e107_INIT')) { exit; }
 
 include_lan(e_PLUGIN."glossary/languages/".e_LANGUAGE."/Lan_".basename(__FILE__));
 
+/* Old redundant ADMIN UI icons
 $imagedir = e_IMAGE."/admin_images/";
 
 if (!defined('GLOSSARY_ICON_LINK'))
@@ -24,5 +25,5 @@ if (!defined('GLOSSARY_ICON_LINK'))
 
 if (!defined('GLOSSARY_ICON_NOLINK'))
 	define('GLOSSARY_ICON_NOLINK', "<img src='".$imagedir."arrow_over_16.png' alt='' title='".GLOSSARY_LAN_ICON_02."' style='border:0; cursor:pointer;' />");
-
+*/
 ?>

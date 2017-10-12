@@ -116,7 +116,7 @@ class glossary_ui extends e_admin_ui
 		  'options' =>   array ( 'title' => LAN_OPTIONS, 'type' => null, 'data' => null, 'width' => '10%', 'thclass' => 'center last', 'class' => 'center last', 'forced' => '1',  ),
 		);		
 		
-		protected $fieldpref = array('glo_name', 'glo_description', 'glo_author', 'glo_datestamp');
+		protected $fieldpref = array('glo_name', 'glo_description', 'glo_author', 'glo_datestamp', 'glo_linked');
 
 	//	protected $preftabs        = array('General', 'Other' );
 //		protected $prefs = array(
