@@ -28,9 +28,10 @@ define('LAN_GLOSSARY_HELP_05', "Explication des icônes");
 define('LAN_GLOSSARY_HELP_06', "editer cette définition");
 define('LAN_GLOSSARY_HELP_07', "Supprimer cette définition");
 define('LAN_GLOSSARY_HELP_08', "Lisez ce block =>");
+/* Old redundant LAN's
 define('LAN_GLOSSARY_HELP_09', "Lier ce mot à sa définition");
 define('LAN_GLOSSARY_HELP_10', "Arrêter de lier ce mot à sa définition");
-
+*/
 define('LAN_GLOSSARY_HELP_CREATE_01', "Créer une définition");
 define('LAN_GLOSSARY_HELP_CREATE_02', "Mot");
 define('LAN_GLOSSARY_HELP_CREATE_03', "Un mot à définir");

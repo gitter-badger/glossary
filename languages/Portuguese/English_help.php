@@ -28,9 +28,10 @@ define('LAN_GLOSSARY_HELP_05', "Explanation of icons");
 define('LAN_GLOSSARY_HELP_06', "edit this definition");
 define('LAN_GLOSSARY_HELP_07', "delete this definition");
 define('LAN_GLOSSARY_HELP_08', "Read this block =>");
+/* Old redundant LAN's
 define('LAN_GLOSSARY_HELP_09', "this word is not linked to its definition");
 define('LAN_GLOSSARY_HELP_10', "this word in any pages is linked to its definition");
-
+*/
 define('LAN_GLOSSARY_HELP_CREATE_01', "Create a definition");
 define('LAN_GLOSSARY_HELP_CREATE_02', "Word");
 define('LAN_GLOSSARY_HELP_CREATE_03', "A word to define");
