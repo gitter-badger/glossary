@@ -174,8 +174,9 @@ switch(vartrue($action)) {
 // removed by rica_carv					$text .= "<br /><br />";
 					$text .= "<br />";
 		$text .= GLOSSARY_ICON_NOLINK." : ".LAN_GLOSSARY_HELP_10;
-	}
 */
+	}
+
 // Removed by rica_carv }
 
 //$helptitle = LAN_GLOSSARY_HELP_01;
