@@ -58,6 +58,8 @@ class glossary_class
 		$this->plugTemplates['WORD_PAGE_TITLE']   	= $glosarytemplate['WORD_PAGE_TITLE'];  
 		$this->plugTemplates['WORD_PAGE_START']     = $glosarytemplate['WORD_PAGE_START'];  
 		$this->plugTemplates['WORD_PAGE_END']       = $glosarytemplate['WORD_PAGE_END'];
+		$this->plugTemplates['WORD_CHAR_START']     = $glosarytemplate['WORD_CHAR_START'];
+		$this->plugTemplates['WORD_CHAR_END']       = $glosarytemplate['WORD_CHAR_END'];
 		$this->plugTemplates['WORD_ANCHOR'] 				= $glosarytemplate['WORD_ANCHOR'];	
 		$this->plugTemplates['WORD_CHAR_LINK']  		= $glosarytemplate['WORD_CHAR_LINK'];  
 		$this->plugTemplates['WORD_CHAR_NOLINK'] 		= $glosarytemplate['WORD_CHAR_NOLINK'];
@@ -113,9 +115,9 @@ class glossary_class
 		return $head_sub;
 	}
 
-// Deprecated in favor of trait... No need to include and start class...
+// Deprecated in favor of trait... No need to include and start class..
 /*
-	function show_letter($approved = 1)
+	function show_letter($approved)
 	{
 
 		$distinctwords = e107::getDb()->retrieve("glossary", " DISTINCT(glo_name) ", "glo_approved = '$approved' ORDER BY glo_name ASC", "default");
@@ -154,14 +156,12 @@ class glossary_class
 		return $text;
 	}
 */
-	
-/* Orphan functions
+/* Orphan functions	
 	function show_word($approved)
 	{
 		global $sql, $ns, $rs, $tp;
 
-//		$text = $this->show_letter($approved);
-		$text = $this->browse_letter($approved);
+		$text = $this->show_letter($approved);
 
 		$letter = (isset($_POST['letter']) ? $_POST['letter'] : "");
 		if ($letter != "" && $letter != LAN_GLOSSARY_SHOWLETT_02 )
@@ -227,6 +227,7 @@ class glossary_class
 		$this->show_word(0);
 	}
 */
+
 	function createDef($id = 0, $sub = 0)
 	{
 		global $sql, $tp, $ns, $rs ;
@@ -355,19 +356,17 @@ class glossary_class
 		$ns -> tablerender($caption, $text);
 	}
 
-/* Orphan function!
+/* Orphan functions	
 	function createWord($id)
 	{
 		$this->createDef($id, 0);
 	}
-*/
-/* Nested function
+
 	function createSubWord($id)
 	{
 		$this->createDef($id, 1);
 	}
-*/
-/* Orphan function!
+
 	function editWord($id)
 	{
 		$this->createWord($id);
@@ -416,7 +415,8 @@ class glossary_class
 	{
 		$this->updateWord(0, $approved);
 	}
-*/	
+*/
+	
 	function updateWord($id, $approved = '1')
 	{
 		global $sql, $tp, $e107cache;
@@ -481,8 +481,9 @@ class glossary_class
 		else
 			$this->addWord(0);
 */
+
     $this->updateWord(0, isset($pref['glossary_submit_directpost']));
-			
+    			
 		$e_event->trigger("wordsub", $edata_ls);
 		
 		if ($direct)
@@ -587,24 +588,31 @@ class glossary_class
   
 		if ($words)
 		{
+      $firstword      = TRUE;
       foreach($words as $row)
      	{
         $glo_id       = $row['glo_id'];
         $word         = $row['glo_name'];
         $description  = $row['glo_description'];
- 
+        
 				if ($wcar <> strtoupper($word{0}))
 				{
 					$wcar = strtoupper($word{0});
-					$wall[$wcar] = 1;
+					$wall[$wcar] = 1;  
+          if(!$firstword) {  
+           $text .= e107::getParser()->parseTemplate($this->plugTemplates['WORD_CHAR_END'], FALSE, $this->word_shortcodes);
+          }         
+          $text .= e107::getParser()->parseTemplate($this->plugTemplates['WORD_CHAR_START'], FALSE, $this->word_shortcodes);
 					$text .= e107::getParser()->parseTemplate($this->plugTemplates['WORD_ANCHOR'], FALSE, $this->word_shortcodes);
+          $firstword      = FALSE;
 				}
 				$text .= e107::getParser()->parseTemplate($this->plugTemplates['WORD_BODY_PAGE'], FALSE, $this->word_shortcodes);
 				$text .= e107::getParser()->parseTemplate($this->plugTemplates['BACK_TO_TOP'], FALSE, $this->word_shortcodes);
-			}
+        
+			} 
+      $text .= e107::getParser()->parseTemplate($this->plugTemplates['WORD_CHAR_END'], FALSE, $this->word_shortcodes);
 		}
 
-/*
 		$ok = 0;
 		for($i = 0; $i <= 255; $i++)
 		{
@@ -615,7 +623,6 @@ class glossary_class
 				break;
 			}
 		}
-
 
 		$wcar = "0-9";
 		if ($ok)
@@ -633,12 +640,7 @@ class glossary_class
 		}
 
 		$text2 = e107::getParser()->parseTemplate($this->plugTemplates['WORD_ALLCHAR_PRE'], FALSE).$text2.e107::getParser()->parseTemplate($this->plugTemplates['WORD_ALLCHAR_POST'], FALSE);
-*/
-
-//    $text2 = $this->show_letter(1);
-
-//		$text  = $text2.$text;
-		$text  = $this->browse_letter().$text;
+		$text  = $text2.$text;
     
     $start = e107::getParser()->parseTemplate($this->plugTemplates['WORD_PAGE_START']);
     $end   = e107::getParser()->parseTemplate($this->plugTemplates['WORD_PAGE_END']);
@@ -680,13 +682,13 @@ class glossary_class
 	{
 		return $this->buildMenuWord("glo_datestamp DESC");
 	}
-*/
-/*	
+	
 	function buildMenuRandWord()
 	{
 		return $this->buildMenuWord("RAND()");
 	}
 */
+
 	function nospam($text)
 	{
 		$tmp = explode("@", $text);
