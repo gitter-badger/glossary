@@ -50,18 +50,30 @@ else
 
 		$HEADING	= "<a href='".e_PLUGIN."glossary/glossaire.php#word_id_".$row['glo_id']."' title='".LAN_GLOSSARY_LIST_02."' rel='internal'>".$rowheading."</a>";
 
+		$AUTHOR = "";
+
 		if ($arr[3])
 		{
-			$tmp = explode(".", $row['glo_author']);
+/*			$tmp = explode(".", $row['glo_author']);
 			if($tmp[0] == "0")
 				$AUTHOR = $tmp[1];
 			elseif(is_numeric($tmp[0]) && $tmp[0] != "0")
 				$AUTHOR = (USER ? "<a href='".e_BASE."user.php?id.".$tmp[0]."'>".$tmp[1]."</a>" : $tmp[1]);
 			else
 				$AUTHOR = "";
+*/
+		if($row['glo_author'] == e107::getUser()->getId())
+		{
+				$AUTHOR = (USER ? "<a href='".e_BASE."user.php?id.".$row['glo_author']."'>".USERNAME."</a>" : USERNAME);
 		}
 		else
-			$AUTHOR = "";
+		{
+			$AUTHOR = e107::getSystemUser($row['glo_author'], false)->getName(LAN_ANONYMOUS);
+		}
+
+		}
+// Avoid elses...		else
+//			$AUTHOR = "";
 
 		$CATEGORY	= "";
 		$DATE		= ($arr[5] ? ($row['glo_datestamp'] > 0 ? $this -> getListDate($row['glo_datestamp'], $mode) : "") : "");
