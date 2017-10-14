@@ -255,6 +255,7 @@ class glossary_class
 			}
 		}
 
+/*
 		if ($username == "")
 		{
 			if (USER)
@@ -262,7 +263,7 @@ class glossary_class
 			else
 				$username = "0.".LAN_GLOSSARY_SUBMITWORD_03;
 		}
-		
+*/		
 		$text = "
 		<div style='text-align:center'>
 		".$rs->form_open("post", e_SELF, "dataform", "", "", "")."
@@ -332,7 +333,8 @@ class glossary_class
 		else
 			$text .= $rs->form_button("submit", "action[add]", LAN_GLOSSARY_CREATEWORD_02);
 			
-		$text .= $rs->form_hidden("username", $username);
+//		$text .= $rs->form_hidden("username", $username);
+		$text .= $rs->form_hidden("username", (USERID?:0));
 
 		$text .= "
 						</td>
@@ -450,9 +452,11 @@ class glossary_class
 		if (!isset($_POST['username']))
 		{
 			if (USER)
-				$username = USERID.".".USERNAME;
+//				$username = USERID.".".USERNAME;
+				$username = USERID;
 			else
-				$username = "0.".LAN_GLOSSARY_SUBMITWORD_03;
+//				$username = "0.".LAN_GLOSSARY_SUBMITWORD_03;
+				$username = "0";
 		}
 		else
 			$username = $tp -> toDB($_POST['username']);
@@ -612,7 +616,7 @@ class glossary_class
 			} 
       $text .= e107::getParser()->parseTemplate($this->plugTemplates['WORD_CHAR_END'], FALSE, $this->word_shortcodes);
 		}
-
+ /* Already in browse_letter method
 		$ok = 0;
 		for($i = 0; $i <= 255; $i++)
 		{
@@ -641,6 +645,8 @@ class glossary_class
 
 		$text2 = e107::getParser()->parseTemplate($this->plugTemplates['WORD_ALLCHAR_PRE'], FALSE).$text2.e107::getParser()->parseTemplate($this->plugTemplates['WORD_ALLCHAR_POST'], FALSE);
 		$text  = $text2.$text;
+*/
+		$text  = $this->browse_letter().$text;
     
     $start = e107::getParser()->parseTemplate($this->plugTemplates['WORD_PAGE_START']);
     $end   = e107::getParser()->parseTemplate($this->plugTemplates['WORD_PAGE_END']);
@@ -695,11 +701,14 @@ class glossary_class
 		return ($tmp[0] != "") ? $tmp[0] . "@nospam.com" : "noauthor@nospam.com";
 	}
 
-	function getAuthor($author)
+// Might be redundant, since v2 core has methods that already handles users...
+// To be checked later....
+//	function getAuthor($author)
+	function getAuthor($uid)
 	{
 		global $sql;
 
-		list($uid, $author) = explode(".", $author);
+//		list($uid, $author) = explode(".", $author);
 	
 		if ($uid)
 		{

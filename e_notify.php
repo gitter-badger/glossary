@@ -33,12 +33,21 @@ if (!function_exists('notify_wordsub'))
 		global $nt;
 
 		include_lan(e_PLUGIN."glossary/languages/".e_LANGUAGE."/".e_LANGUAGE."_".basename(__FILE__));
-		$username		= $data['username'];
+//		$username		= $data['username'];
+		$uid    		= $data['username'];
 		$ip					= $data['ip'];
 		$word_name	= $data['word_name'];
 		$word_desc	= $data['word_desc'];
 		
-		list($uid, $user) = explode(".", $username);
+//		list($uid, $user) = explode(".", $username);
+		if($uid == e107::getUser()->getId())
+		{
+				$user = USERNAME;
+		}
+		else
+		{
+			$user = e107::getSystemUser($row['glo_author'], false)->getName(LAN_ANONYMOUS);
+		}
 		
 		$message  = "<u><i>".LAN_GLOSSARY_NOTIFY_04.":</i></u> ".$user." (".$uid.")";
 		$message .= "<br />";
