@@ -240,7 +240,7 @@ class glossary_general_ui extends e_admin_ui
 
   	protected $prefs = array( 
   					'glossary_linkword'  => array('title'=> LAN_GLOSSARY_OPTGEN_05,'type' => 'boolean'),
-//////////					  'glossary_submit'  => array('title'=> LAN_GLOSSARY_OPTGEN_07,'type' => 'boolean'),
+					  'glossary_submit'  => array('title'=> LAN_GLOSSARY_OPTGEN_07,'type' => 'boolean'),
 					  'glossary_submit_class'  => array('title'=> LAN_GLOSSARY_OPTGEN_08, 'type'=>'userclass'),
 					  'glossary_submit_directpost'  => array('title'=> LAN_GLOSSARY_OPTGEN_09,'type' => 'boolean'),
 					  'glossary_submit_htmlarea'  => array('title'=> LAN_GLOSSARY_OPTGEN_10,'type' => 'boolean'),
