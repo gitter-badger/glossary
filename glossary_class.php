@@ -449,6 +449,7 @@ class glossary_class
     $pref = e107::getPlugConfig('glossary')->getPref();
 		$word_name = $tp -> toDB($_POST['word_name']);
 		$word_desc = $tp -> toDB($_POST['word_desc']);
+/*
 		if (!isset($_POST['username']))
 		{
 			if (USER)
@@ -460,6 +461,9 @@ class glossary_class
 		}
 		else
 			$username = $tp -> toDB($_POST['username']);
+*/
+// Test ternary if
+		$username = (!isset($_POST['username'])?(USER?USERID:"0"):$tp -> toDB($_POST['username']));
 
 		$ip = $e107->getip();
 
