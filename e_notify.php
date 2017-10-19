@@ -40,6 +40,7 @@ if (!function_exists('notify_wordsub'))
 		$word_desc	= $data['word_desc'];
 		
 //		list($uid, $user) = explode(".", $username);
+/*
 		if($uid == e107::getUser()->getId())
 		{
 				$user = USERNAME;
@@ -48,7 +49,10 @@ if (!function_exists('notify_wordsub'))
 		{
 			$user = e107::getSystemUser($row['glo_author'], false)->getName(LAN_ANONYMOUS);
 		}
-		
+*/		
+// Test ternary if
+		$user = ($uid == e107::getUser()->getId()?USERNAME:e107::getSystemUser($row['glo_author'], false)->getName(LAN_ANONYMOUS));
+
 		$message  = "<u><i>".LAN_GLOSSARY_NOTIFY_04.":</i></u> ".$user." (".$uid.")";
 		$message .= "<br />";
 		$message .= "<u><i>".LAN_GLOSSARY_NOTIFY_04.":</i></u> ".$ip;
