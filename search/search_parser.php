@@ -50,6 +50,7 @@ function search_glossary($row)
 	$datestamp = $con -> convert_date($row['glo_datestamp'], "long");
 //	list($uid, $user) = explode(".", $row['glo_author'], 2);
 
+/*
 		if($row['glo_author'] == e107::getUser()->getId())
 		{
 				$user = USERNAME;
@@ -58,6 +59,9 @@ function search_glossary($row)
 		{
 			$user = e107::getSystemUser($row['glo_author'], false)->getName(LAN_ANONYMOUS);
 		}
+*/
+// Test ternary if
+	$user = ($row['glo_author'] == e107::getUser()->getId()?USERNAME:e107::getSystemUser($row['glo_author'], false)->getName(LAN_ANONYMOUS));
 
 //	$userlink = "<a href='".e_BASE."user.php?id.".$uid."'>".$user."</a>";
 	$userlink = "<a href='".e_BASE."user.php?id.".$row['glo_author']."'>".$user."</a>";

@@ -62,6 +62,7 @@ else
 			else
 				$AUTHOR = "";
 */
+/*
 		if($row['glo_author'] == e107::getUser()->getId())
 		{
 				$AUTHOR = (USER ? "<a href='".e_BASE."user.php?id.".$row['glo_author']."'>".USERNAME."</a>" : USERNAME);
@@ -70,6 +71,9 @@ else
 		{
 			$AUTHOR = e107::getSystemUser($row['glo_author'], false)->getName(LAN_ANONYMOUS);
 		}
+*/
+// Test ternary if
+				$AUTHOR = ($row['glo_author'] == e107::getUser()->getId()?(USER ? "<a href='".e_BASE."user.php?id.".$row['glo_author']."'>".USERNAME."</a>" : USERNAME):e107::getSystemUser($row['glo_author'], false)->getName(LAN_ANONYMOUS));
 
 		}
 // Avoid elses...		else
