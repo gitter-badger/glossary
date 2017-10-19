@@ -114,8 +114,8 @@ class plugin_glossary_glossary_shortcodes extends e_shortcode
 		$text = "";
 		$mains = "";
 		$baseurl = e_PLUGIN."glossary/glossaire.php";
-/////		if(isset($pref['glossary_page_link_submit']) && $pref['glossary_page_link_submit'] && isset($pref['glossary_submit']) && $pref['glossary_submit'] && check_class($pref['glossary_submit_class']))
-		if(isset($pref['glossary_page_link_submit']) && $pref['glossary_page_link_submit'] && $pref['glossary_submit'] && check_class($pref['glossary_submit_class']))
+		if(isset($pref['glossary_page_link_submit']) && $pref['glossary_page_link_submit'] && isset($pref['glossary_submit']) && $pref['glossary_submit'] && check_class($pref['glossary_submit_class']))
+///////		if(isset($pref['glossary_page_link_submit']) && $pref['glossary_page_link_submit'] && $pref['glossary_submit'] && check_class($pref['glossary_submit_class']))
 		{
 			$direct = (isset($pref['glossary_submit_directpost']) && $pref['glossary_submit_directpost']) ? 1 : 0;
 			if(isset($pref['glossary_page_link_rendertype']) && $pref['glossary_page_link_rendertype'] == "1")
@@ -161,8 +161,8 @@ class plugin_glossary_glossary_shortcodes extends e_shortcode
 				$mains .= $bullet."&nbsp;<a href='".$baseurl."'>".LAN_GLOSSARY_BLMENU_02."</a>";
 		}
 		
-/////		if(isset($pref['glossary_menu_link_submit']) && $pref['glossary_menu_link_submit'] && isset($pref['glossary_submit']) && $pref['glossary_submit'] && check_class($pref['glossary_submit_class']))
-		if(isset($pref['glossary_menu_link_submit']) && $pref['glossary_menu_link_submit'] && $pref['glossary_submit'] && check_class($pref['glossary_submit_class']))
+		if(isset($pref['glossary_menu_link_submit']) && $pref['glossary_menu_link_submit'] && isset($pref['glossary_submit']) && $pref['glossary_submit'] && check_class($pref['glossary_submit_class']))
+////		if(isset($pref['glossary_menu_link_submit']) && $pref['glossary_menu_link_submit'] && $pref['glossary_submit'] && check_class($pref['glossary_submit_class']))
 		{
 			$direct = (isset($pref['glossary_submit_directpost']) && $pref['glossary_submit_directpost']) ? 1 : 0;
 			if(isset($pref['glossary_menu_link_rendertype']) && $pref['glossary_menu_link_rendertype'] == "1")
