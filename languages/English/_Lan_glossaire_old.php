@@ -11,27 +11,6 @@
  * Released under the terms and conditions of the
  * GNU General Public License (http://gnu.org).
  *
- * $Source: /home/e-smith/files/ibays/cvsroot/files/glossary/languages/English/Lan_glossary.php,v $
- * $Revision: 1.1 $
- * $Date: 2006/06/10 19:53:03 $
- * $Author: duclos $
- */
-
-if (!defined('e107_INIT')) { exit; }
-
-define('LAN_GLOSSARY_LINK_01', "Go to its definition");
-/**
- * Glossary by Shirka (www.shirka.org)
- *
- * A plugin for the e107 Website System (http://e107.org)
- *
- * ©Andre DUCLOS 2006
- * http://www.shirka.org
- * duclos@shirka.org
- *
- * Released under the terms and conditions of the
- * GNU General Public License (http://gnu.org).
- *
  * $Source: /home/e-smith/files/ibays/cvsroot/files/glossary/languages/English/Lan_glossaire.php,v $
  * $Revision: 1.4 $
  * $Date: 2006/06/26 23:05:57 $
@@ -51,4 +30,5 @@ define('LAN_GLOSSARY_GLO_07', "Navigator");
 define('LAN_GLOSSARY_EMAILPRINT_01', "Email this definition");
 define('LAN_GLOSSARY_EMAILPRINT_02', "Print this definition");
 define('LAN_GLOSSARY_EMAILPRINT_03', "Create a PDF file");
+
 ?>

@@ -30,6 +30,7 @@ define('LAN_GLOSSARY_ADMIN_README_07', "Use normal e107 plugin installation proc
 define('LAN_GLOSSARY_ADMIN_README_08', "Features");
 define('LAN_GLOSSARY_ADMIN_README_09', "Set a custom title for the glossary pages on your website.");
 
+
 /**
  * Glossary by Shirka (www.shirka.org)
  *
@@ -63,7 +64,6 @@ define('LAN_GLOSSARY_HELP_08', "Read this block =>");
 define('LAN_GLOSSARY_HELP_09', "this word is not linked to its definition");
 define('LAN_GLOSSARY_HELP_10', "this word in any pages is linked to its definition");
 */
-
 define('LAN_GLOSSARY_HELP_CREATE_01', "Create a definition");
 define('LAN_GLOSSARY_HELP_CREATE_02', "Word");
 define('LAN_GLOSSARY_HELP_CREATE_03', "A word to define");
