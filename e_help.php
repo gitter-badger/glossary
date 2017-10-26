@@ -15,10 +15,11 @@
 
 if (!defined('e107_INIT')) { exit; }
 
-require_once(e_PLUGIN."glossary/glossary_defines.php");
+//require_once(e_PLUGIN."glossary/glossary_defines.php");
 
 //include_lan(e_PLUGIN."glossary/languages/".e_LANGUAGE."/Lan_".basename(__FILE__));
-e107::lan('glossary','help',true);
+//e107::lan('glossary','front',true);
+//e107::lan('glossary','help',true);
 
 /* Removed by rica_carv
 if(!e_QUERY)

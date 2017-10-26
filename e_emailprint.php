@@ -21,7 +21,7 @@ if (!defined('e107_INIT')) { exit; }
 
 include_lan(e_PLUGIN."glossary/languages/".e_LANGUAGE."/Lan_".basename(__FILE__));
 
-include_once(e_PLUGIN.'glossary/glossary_class.php');
+//include_once(e_PLUGIN.'glossary/glossary_class.php');
 
 function print_item($id)
 {
@@ -30,10 +30,11 @@ function print_item($id)
 	require_once(e_HANDLER.'bbcode_handler.php');
 	$conv = new convert;
 	$e_bb = new e_bbcode;
-	$gc = new glossary_class;
+//	$gc = new glossary_class;
 
-	include_once(e_PLUGIN.'glossary/glossary_class.php');
-	$gc = new glossary_class;
+// Why include & restart again?
+//	include_once(e_PLUGIN.'glossary/glossary_class.php');
+//	$gc = new glossary_class;
 
 	$sql->db_Select("glossary", "*", "glo_id='".intval($id)."'");
 	$row = $sql->db_Fetch();
@@ -41,10 +42,15 @@ function print_item($id)
 	$row['glo_name']				= $tp->toHTML($row['glo_name']);
 	$row['glo_description'] = $tp->toHTML($row['glo_description']);
 	
-	list($uid, $author, $email) = $gc->getAuthor($row['glo_author']);
+//////	list($uid, $author, $email) = $gc->getAuthor($row['glo_author']);
+// Copy of core shortcode user_email with some changes
+  $userdata = e107::getSystemUser($row['glo_author'], false);
+  $author = $userdata->getName(LAN_ANONYMOUS);
+  $email = $tp->emailObfuscate($userdata->var['user_email']);
 	
 	$row['glo_datestamp'] = $conv->convert_date($row['glo_datestamp'], "long");
 
+/*
 	$text = "<font style=\"font-size: 11px; color: black; font-family: tahoma, verdana, arial, helvetica; text-decoration: none\">
 					<b>".$row['glo_name']."</b>
 					<br />
@@ -58,6 +64,22 @@ function print_item($id)
 					<br />
 					( ". SITEURLBASE.e_PLUGIN_ABS."glossaire/glossaire.php#".$gc->first_car($row['glo_name']) . " )
 					";	
+*/
+	$text = "<font style=\"font-size: 11px; color: black; font-family: tahoma, verdana, arial, helvetica; text-decoration: none\">
+					<b>".$row['glo_name']."</b>
+					<br />
+					<i>" . $author . " [" . $email . "], " . $row['glo_datestamp'] . "</i>
+					<br />
+					" . $row['glo_description'] ."
+					<br />
+					<hr />
+					<br />
+					<i>" . LAN_GLOSSARY_PRINT_01 . " <b>" . SITENAME . "</b></i>
+					<br />
+					( ". SITEURLBASE.e_PLUGIN_ABS."glossaire/glossaire.php#".strtoupper(mb_substr($row['glo_name'], 0, 1, 'utf-8')). " )
+					";
+          
+
 	
 	$text = $e_bb->parseBBCodes($text , '');
 	
@@ -77,7 +99,7 @@ function print_item_pdf($id)
 
 	$conv = new convert;
 	$e_bb = new e_bbcode;
-	$gc = new glossary_class;
+//	$gc = new glossary_class;
 
 	$sql->db_Select("glossary", "*", "glo_id='".intval($id)."'");
 	$row = $sql->db_Fetch();
@@ -85,7 +107,8 @@ function print_item_pdf($id)
 	$row['glo_name']				= $tp->toHTML($row['glo_name']);
 	$row['glo_description'] = $tp->toHTML($row['glo_description']);
 	
-	list($uid, $author, $email) = $gc->getAuthor($row['glo_author']);
+/////	list($uid, $author, $email) = $gc->getAuthor($row['glo_author']);
+///  $author = e107::getSystemUser($row['glo_author'], false)->getName(LAN_ANONYMOUS);
 	
 	$row['glo_datestamp'] = $conv->convert_date($row['glo_datestamp'], "long");
 	
@@ -95,13 +118,16 @@ function print_item_pdf($id)
 	//as the pdf methods will handle this !
 	$text			= $row['glo_description'];	//define text
 	$creator	= SITENAME;									//define creator
-	$author		= $author;									//define author
+//	$author		= $author;									//define author
+	$author		= e107::getSystemUser($row['glo_author'], false)->getName(LAN_ANONYMOUS);									//define author
 	$title		= $row['glo_name'];					//define title
 	$subject	= $row['glo_name'];					//define subject
 	$keywords	= "";												//define keywords
 
 	//define url to use in the header of the pdf file
-	$url		= SITEURLBASE.e_PLUGIN_ABS."glossary/glossaire.php#".$gc->first_car($row['glo_name']);
+//	$url		= SITEURLBASE.e_PLUGIN_ABS."glossary/glossary.php#".$gc->first_car($row['glo_name']);
+	$url		= SITEURLBASE.e_PLUGIN_ABS."glossary/glossary.php#".strtoupper(mb_substr($row['glo_name'], 0, 1, 'utf-8'));
+
 
 	//always return an array with the following data:
 

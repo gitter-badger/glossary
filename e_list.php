@@ -48,7 +48,7 @@ else
 		$rowheading	= $this->parse_heading($row['glo_name'], $mode);
 		$ICON		= $bullet;
 
-		$HEADING	= "<a href='".e_PLUGIN."glossary/glossaire.php#word_id_".$row['glo_id']."' title='".LAN_GLOSSARY_LIST_02."' rel='internal'>".$rowheading."</a>";
+		$HEADING	= "<a href='".e_PLUGIN."glossary/glossary.php#word_id_".$row['glo_id']."' title='".LAN_GLOSSARY_LIST_02."' rel='internal'>".$rowheading."</a>";
 
 		$AUTHOR = "";
 

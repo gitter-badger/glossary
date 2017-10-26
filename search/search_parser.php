@@ -66,7 +66,7 @@ function search_glossary($row)
 //	$userlink = "<a href='".e_BASE."user.php?id.".$uid."'>".$user."</a>";
 	$userlink = "<a href='".e_BASE."user.php?id.".$row['glo_author']."'>".$user."</a>";
 
-	$res['link']			= e_PLUGIN."glossary/glossaire.php#word_id_".$row['glo_id'];
+	$res['link']			= e_PLUGIN."glossary/glossary.php#word_id_".$row['glo_id'];
 	$res['pre_title']	= "";
 	$res['title']			= $row['glo_name'];
 	$res['summary']		= $row['glo_description'];

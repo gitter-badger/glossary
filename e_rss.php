@@ -33,8 +33,8 @@ $eplug_rss_feed[]	= $feed;
 
 //##### create rss data, return as array $eplug_rss_data -----------------------------------
 
-include_once(e_PLUGIN.'glossary/glossary_class.php');
-$gc = new glossary_class;
+//include_once(e_PLUGIN.'glossary/glossary_class.php');
+//$gc = new glossary_class;
 /*
 // Remove UTF-8 BOM
 if($buf = ob_get_contents())
@@ -53,10 +53,15 @@ if($items = $sqlrss -> db_Select('glossary', "*", "glo_approved = '1' ORDER BY g
 	$i=0;
 	while($rowrss = $sqlrss -> db_Fetch())
 	{
-		list($uid, $author, $email) = $gc->getAuthor($row['glo_author']);
+//		list($uid, $author, $email) = $gc->getAuthor($row['glo_author']);
+  $userdata = e107::getSystemUser($row['glo_author'], false);
+/*
 		$rss[$i]['author']				= $author;
 		$rss[$i]['author_email']	= $email;
-		$rss[$i]['link']					= $e107->base_path.$PLUGINS_DIRECTORY."glossary/glossaire.php#word_id_".$rowrss['glo_id'];
+*/
+		$rss[$i]['author']				= $userdata->getName(LAN_ANONYMOUS);
+		$rss[$i]['author_email']	= e107::getParser()->emailObfuscate($userdata->var['user_email']);
+		$rss[$i]['link']					= $e107->base_path.$PLUGINS_DIRECTORY."glossary/glossary.php#word_id_".$rowrss['glo_id'];
 		$rss[$i]['linkid']				= $rowrss['glo_id'];
 		$rss[$i]['title']					= $rowrss['glo_name'];
 		$rss[$i]['description']		= $rowrss['glo_description'];

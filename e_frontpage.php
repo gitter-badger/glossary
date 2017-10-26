@@ -27,7 +27,7 @@ class glossary_frontpage // include plugin-folder in the name.
 	{
 		$frontPage = array();
 		$frontPage['title'] = LAN_GLOSSARY_FRONT_01;
-		$frontPage['page']  = '{e_PLUGIN}glossary/glossaire.php'; 
+		$frontPage['page']  = '{e_PLUGIN}glossary/glossary.php'; 
 		return 	$frontPage;
 	}
 }
